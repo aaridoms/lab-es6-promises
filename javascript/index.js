@@ -53,7 +53,15 @@ obtainInstruction('steak', 0)
     document.querySelector("#steak").innerHTML += `<li>${step5}</li>`
     return obtainInstruction('steak', 5)
   })
-  .then ((listo) => {
+  .then ((step6) => {
+    document.querySelector("#steak").innerHTML += `<li>${step6}</li>`
+    return obtainInstruction('steak', 6)
+  })
+  .then ((step7) => {
+    document.querySelector("#steak").innerHTML += `<li>${step7}</li>`
+    return obtainInstruction('steak', 7)
+  })
+  .then (() => {
     document.querySelector("#steak").innerHTML += `<li>Stake is ready!</li>`
     document.querySelector("#steakImg").removeAttribute("hidden");
   })
@@ -76,7 +84,10 @@ async function makeBroccoli() {
     document.querySelector("#broccoli").innerHTML += `<li>${step4}</li>`
     const step5 = await obtainInstruction("broccoli", 4)
     document.querySelector("#broccoli").innerHTML += `<li>${step5}</li>`
-    const listo = await obtainInstruction("broccoli", 5)
+    const step6 = await obtainInstruction("broccoli", 5)
+    document.querySelector("#broccoli").innerHTML += `<li>${step6}</li>`
+    const step7 = await obtainInstruction("broccoli", 6)
+    document.querySelector("#broccoli").innerHTML += `<li>${step7}</li>`
     document.querySelector("#broccoli").innerHTML += `<li>${"Broccoli is ready!"}</li>`
     document.querySelector("#broccoliImg").removeAttribute("hidden");
   } catch (error) {
@@ -87,4 +98,30 @@ makeBroccoli() /** Como te olvides de llamar la función no sale nada */
 
 // Bonus 2 - Promise all
 // ...
+Promise.all([
+  step1 = obtainInstruction("brusselsSprouts", 0),
+  step2 = obtainInstruction("brusselsSprouts", 1),
+  step3 = obtainInstruction("brusselsSprouts", 2),
+  step4 = obtainInstruction("brusselsSprouts", 3),
+  step5 = obtainInstruction("brusselsSprouts", 4),
+  step6 = obtainInstruction("brusselsSprouts", 5),
+  step7 = obtainInstruction("brusselsSprouts", 6),
+  step8 = obtainInstruction("brusselsSprouts", 7)
 
+])
+.then((response) => {
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[0]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[1]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[2]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[3]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[4]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[5]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[6]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>${response[7]}</li>`
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`
+  document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+  
+})
+.catch(err => {
+  console.log(err)
+})
